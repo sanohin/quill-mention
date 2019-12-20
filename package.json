@@ -1,5 +1,5 @@
 {
-  "name": "quill-mention",
+  "name": "quill-mention-absolute",
   "version": "2.2.1",
   "description": "@mentions for the Quill rich text editor",
   "main": "dist/quill.mention.csj.js",
