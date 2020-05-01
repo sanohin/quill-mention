@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="../node_modules/quill//dist/quill.core.css" />
-    <link rel="stylesheet" href="../src/quill.mention.css" />
+    <link rel="stylesheet" href="node_modules/quill/dist/quill.core.css" />
+    <link rel="stylesheet" href="src/quill.mention.css" />
     <style>
       #app {
-        margin-left: 400px;
+        margin-left: 100px;
         width: 500px;
       }
       .ql-editor {
@@ -15,9 +15,31 @@
         top: 0;
         left: 0;
       }
+      #toggle {
+        position: fixed;
+        right: 40px;
+        top: 40px;
+      }
     </style>
   </head>
   <body>
+    <button id="toggle">Move to bottom</button>
+    <script>
+      document.getElementById("toggle").addEventListener("click", (e) => {
+        const app = document.getElementById("app");
+        const margin = parseInt(app.style.marginTop);
+        let nextMargin, nextLabel;
+        if (margin !== 0 && Number.isInteger(margin)) {
+          nextMargin = "0px";
+          nextLabel = "Move to bottom";
+        } else {
+          nextMargin = "600px";
+          nextLabel = "Move to top";
+        }
+        e.currentTarget.innerText = nextLabel;
+        app.style.marginTop = nextMargin;
+      });
+    </script>
     <br />
     <br />
     <br />
@@ -100,5 +122,6 @@
     <br />
     <div id="popover"></div>
   </body>
-  <script src="./dist/index.js"></script>
+  <script src="sandbox/dist/index.js"></script>
+  >
 </html>

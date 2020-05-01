@@ -326,12 +326,24 @@ class Mention {
       const yTop = y + mentionCharPos.top - this.mentionContainer.offsetHeight;
 
       const mentionContainerBottom = yBottom + this.mentionContainer.offsetHeight;
-      const isBottomVisible = window.pageYOffset + window.innerHeight > mentionContainerBottom;
-      if (isBottomVisible) {
+
+      const padding = 20;
+      const diffToBottom = Math.max(0,
+        mentionContainerBottom - (window.pageYOffset + window.innerHeight - padding));
+      const diffToTop = Math.max(0, window.pageYOffset + padding - yTop);
+
+      const directionToBottom = diffToTop >= diffToBottom;
+
+      if (directionToBottom) {
         y = yBottom;
+        const maxHeight = this.mentionContainer.offsetHeight - diffToBottom;
+        this.mentionContainer.style.maxHeight = `${maxHeight}px`;
       } else {
-        y = yTop;
+        y = yTop - diffToTop;
+        const maxHeight = this.mentionContainer.offsetHeight - diffToTop;
+        this.mentionContainer.style.maxHeight = `${maxHeight}px`;
       }
+
       if (this.options.fixMentionsToQuill) {
         this.mentionContainer.style.maxWidth = `${this.quill.container.offsetWidth}px`;
       }

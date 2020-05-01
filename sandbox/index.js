@@ -11,12 +11,12 @@ const quill = new Quill('#app', {
       mentionDenotationChars: ['@'],
       fixMentionsToQuill: true,
       source: (searchTerm, renderList) => {
-        const matchedPeople = [
-          { id: 1, value: 'aaa' },
-          { id: 12, value: 'vvv eewe' },
-          { id: 122, value: 'vvv eewe' },
-          { id: 132, value: 'extremely long name gooes hererereeereeerereeeererreehererereeereeerereeeererree' },
-        ];
+        const matchedPeople = Array(20).fill(null).map((e, i) => {
+          return {
+            id: i,
+            value: `John Doe ${i}`,
+          };
+        });
         renderList(matchedPeople);
       },
     },
