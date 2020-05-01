@@ -1,6 +1,6 @@
 import Quill from 'quill';
 import Keys from './constants/keys';
-import './quill.mention.css';
+// import './quill.mention.css';
 import './blots/mention';
 
 
@@ -339,7 +339,7 @@ class Mention {
         const maxHeight = this.mentionContainer.offsetHeight - diffToBottom;
         this.mentionContainer.style.maxHeight = `${maxHeight}px`;
       } else {
-        y = yTop - diffToTop;
+        y = yTop + diffToTop;
         const maxHeight = this.mentionContainer.offsetHeight - diffToTop;
         this.mentionContainer.style.maxHeight = `${maxHeight}px`;
       }
